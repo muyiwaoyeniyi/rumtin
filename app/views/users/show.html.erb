@@ -1,0 +1,52 @@
+<% provide(:title, 'My Profile') %>
+
+<div class="row">
+
+<div class="container" style="text-align: center; border-bottom: 1px dashed #DCDCDC;">
+    <%= render 'shared/tagline' %>   
+</div>
+
+    <%= render 'shared/sidenav' %>      
+
+    <%#<div style="text-align: right">Filter</div>%>
+    
+      <div class="col-md-10 awesome-gray" style="border-left: 1px dashed #DCDCDC; border-right: 1px dashed #DCDCDC;">
+
+          <div class="row">
+          	<div class="col-md-6">
+          	<p class="user-info">Profile created on: <%= current_user.created_at.strftime("%d/%m/%Y") %>, Listed: <%= pluralize(current_user.books.count, "book") %></p>
+          	</div>
+          </div>
+
+          
+          <% current_user.books.each do |r| %>
+           <div class="row user-row-listing">            	
+            	<div class="col-md-2" style="border: 0px solid black;">
+	               <% if r.book_photos.present? %>
+                  <%= link_to r do %>
+                    <%= image_tag r.book_photos.first.photo.url(:cover), :alt => "Cover Photo" %>
+                    <% end %>      
+              <% else %>
+                    <img src="http://placehold.it/60x90">
+              <% end %>
+            	</div>
+
+                
+
+	            <div class="col-md-10" style="border: 0px solid black;">
+	              <a class="wrapword"><strong><%= link_to r.title, r %></strong></a><br>
+	              <strong>Price:</strong> $<%= number_to_currency(r.price) %><br>
+	              <strong>Posted:</strong> <%= time_ago_in_words(r.created_at) %> ago in <%= r.zipcode %><br>
+	              <strong class="truncate">Details:</strong> <%= r.description %><br>
+	              <% if can? :update, r %>
+                <%= link_to 'Edit Listing', edit_book_path(r) %> <%#= link_to 'Delete', book, method: :delete, data: { confirm: 'Are you sure?' } %>      
+              <% end %>
+	            </div>
+          </div>
+          <% end %>
+          </div>
+     </div>
+</div>
+
+
+<%#= link_to 'Back', books_path %>

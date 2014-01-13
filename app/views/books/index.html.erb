@@ -1,0 +1,48 @@
+<% provide(:title, 'Rumtin') %>
+
+<div class="row">
+
+<div class="container" style="text-align: center; border-bottom: 1px dashed #DCDCDC;">
+    <%= render 'shared/tagline' %>   
+</div>
+
+
+    <%= render 'shared/sidenav' %>      
+
+    <%#<div style="text-align: right">Filter</div>%>
+    
+      <div class="col-md-10" style="border-left: 1px dashed #DCDCDC; border-right: 1px dashed #DCDCDC;">
+
+        <% @books.each do |book| %>
+
+          <div class="home-row-listing awesome-gray">
+
+            <div class="col-md-2" style="border: 0px solid black;">
+            
+              <% if book.book_photos.present? %>
+                  <%= link_to book do %>
+                    <%= image_tag book.book_photos.first.photo.url(:cover), :alt => "Cover Photo" %>
+                    <% end %>      
+              <% else %>
+                    <img src="http://placehold.it/60x90">
+              <% end %>
+
+            </div>
+
+            <div class="col-md-10" style="border: 0px solid black;">
+              <a class="wrapword"><strong><%= link_to book.title, book %></strong></a> <br>
+              <h6>Price: <%= number_to_currency(book.price) %><h6>
+              <h6 class="truncate"><%= book.description %><h6>
+              <h6>Posted <%= time_ago_in_words(book.created_at) %> ago in <%= book.zipcode %></h6>
+              <h6><% if can? :update, @article %>
+                <%= link_to 'Edit Listing', edit_book_path(book) %> <%#= link_to 'Delete', book, method: :delete, data: { confirm: 'Are you sure?' } %>      
+              <% end %></h6>
+            </div>
+
+          </div>
+
+        <% end %>
+
+      </div>
+
+</div>

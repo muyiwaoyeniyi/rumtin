@@ -1,0 +1,60 @@
+<%#= link_to 'Back', books_path %>
+<% provide(:title, @book.title) %>
+
+<div class="row">
+
+    <div class="container" style="text-align: center; border-bottom: 1px dashed #DCDCDC;">
+        <%= render 'shared/tagline' %>           
+        <%#= link_to "Back to home", "/", class: "pull-right" %>
+    </div>
+
+    <%= render 'shared/sidenav' %>      
+
+       <div class="col-md-10 awesome-gray" style="border-left: 1px dashed #DCDCDC; border-right: 1px dashed #DCDCDC;">
+         <div class="col-md-2 book-margin-top" style="border: 0px solid black; margin-bottom: 40px;">
+
+               <div href="#" class="">
+                 <% if @book.book_photos.present? %>
+                    <%= image_tag @book.book_photos.first.photo.url(:cover),:alt => "Cover Photo" %>      
+                  <% else %>
+                    <img src="http://placehold.it/150x250">
+                  <% end %>
+               </div>
+
+            </div>
+
+
+        <div class="col-md-10 thumbnail book-margin-top">
+
+              <p><h5><strong><%= @book.title %></strong></h5></p>
+              <p><strong>Price:</strong> <%= number_to_currency(@book.price) %></p>
+              <p><strong>Posted:</strong> <%= @book.created_at.strftime("%d/%m/%Y") %></p>
+              <p><strong>Contact Seller:</strong> <%= @book.user.email.partition("@")[0] %> [at] <%= @book.user.email.partition("@")[2].partition(".")[0] %> [dot] <%= @book.user.email.partition("@")[2].partition(".")[2] %></p>
+          </div>
+
+        <div class="col-md-10 thumbnail">
+              <p><h5><strong>More Information:</strong></h5></p>
+              <p><%= @book.description %></p>
+              <p><strong>Location/School:</strong><%= @book.location %> <%= @book.zipcode %></p>
+              <% if @book.book_photos.present? %>     
+                  <%= link_to "View Photos", @book.book_photos.first.photo.url, :class => "fancybox", :rel => "gallery1" %>
+
+                     <div style="display:none">
+                      <div id="morephotos">
+                        <% (1..@book.book_photos.length-1).each do |r| %>
+                        <a class="fancybox" rel="gallery1"><%= image_tag @book.book_photos[r].photo.url, :alt => "" %> </a>
+                        <% end %>  
+                       </div>
+                      </div>
+                  <% end %><br><br>
+              <% if can? :update, @article %>
+                <%= link_to 'Edit Listing', edit_book_path(@book) %> <%#= link_to 'Delete', book, method: :delete, data: { confirm: 'Are you sure?' } %>     
+              <% end %>
+        </div>
+      </div>
+
+
+
+</div>
+
+

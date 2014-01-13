@@ -1,0 +1,25 @@
+<% provide(:title, 'Edit my listing') %>
+
+
+<div class="row awesome-gray">
+
+<div class="container" style="text-align: center; border-bottom: 1px dashed #dcdcdc;">
+    <%= render 'shared/tagline' %>   
+</div>
+
+    <%#= render 'shared/sidenav' %>      
+
+    <%#<div style="text-align: right">Filter</div>%>
+    
+      <div class="col-md-8 col-md-offset-2"><br>
+      	<div class="row">
+      		<div class="thumbnail" style="padding: 30px;">
+      		<h3>Edit my listing</h3>
+      		<%= render 'form' %>   
+      		<%#= link_to 'Show', @book %> <%#|%>
+			<%#= link_to 'Back', books_path %>
+
+      		</div>
+      	</div>
+     </div>
+</div>

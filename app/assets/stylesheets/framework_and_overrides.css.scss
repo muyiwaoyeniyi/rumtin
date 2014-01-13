@@ -1,0 +1,143 @@
+// import the CSS framework
+@import url('/assets/jquery.fancybox.css');
+@import "bootstrap";
+@import url(http://fonts.googleapis.com/css?family=Quattrocento);
+
+*{font-family:Quattrocento;}
+h6, h5, h4, h3, h2, h1{font-family:Quattrocento;}
+
+// make all images responsive by default
+img {
+  @extend .img-responsive;
+  margin: 0 auto;
+  }
+// override for the 'Home' navigation link
+.navbar-brand {
+  font-size: inherit;
+  }
+
+// THESE ARE EXAMPLES YOU CAN MODIFY
+// create your own classes
+// to make views framework-neutral
+.column {
+  @extend .col-md-6;
+  @extend .text-center;
+  }
+.form {
+  @extend .col-md-6;
+  }
+.form-centered {
+  @extend .col-md-6;
+  @extend .text-center;
+  }
+.submit {
+  @extend .btn;
+  @extend .btn-primary;
+  @extend .btn-lg;
+  }
+// apply styles to HTML elements
+// to make views framework-neutral
+main {
+  @extend .container;
+  padding-bottom: 80px;
+  width: 100%;
+  margin-top: 51px; // accommodate the navbar
+  }
+section {
+  @extend .row;
+  margin-top: 20px;
+  }
+
+
+// CSS Mods
+
+.add_book_button{
+  @extend .btn;
+  @extend .btn-default;
+  @extend .navbar-btn;
+  background-color: #2abb9b;
+}
+
+.rumtin{
+  @extend .navbar-brand;
+  color: #e06d5e;
+}
+
+.tagl{
+  color: #e06d5e;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  font-size: 13px;
+}
+
+.home-row-listing{
+  @extend .row;
+  border-bottom: 1px dashed #DCDCDC; 
+  margin-top: 15px; 
+  padding-bottom: 15px;
+}
+
+.user-row-listing{
+  border-bottom: 1px dashed #DCDCDC; 
+  padding-bottom: 15px; 
+  padding-top: 15px;
+}
+
+.user-info{
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-top: 7px;
+}
+
+.book-margin-top{
+  margin-top: 30px;
+}
+
+.wrapword{
+  white-space: -moz-pre-wrap !important;  /* Mozilla, since 1999 */
+  white-space: -pre-wrap;      /* Opera 4-6 */
+  white-space: -o-pre-wrap;    /* Opera 7 */
+  white-space: pre-wrap;       /* css-3 */
+  word-wrap: break-word;       /* Internet Explorer 5.5+ */
+  word-break: break-all;
+  white-space: normal;
+}
+
+.truncate {
+  width: auto;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#error_explanation {
+    width: auto;
+    border: 1px solid rgb(238, 211, 215);
+    padding: 7px 7px 0px;
+    margin-bottom: 12px;
+    background-color: rgb(242, 222, 222);
+    color: rgb(185, 74, 72);
+}
+
+#error_explanation h2 {
+    text-align: left;
+    font-weight: bold;
+    padding: 0px 0px 0px 15px;
+    font-size: 12px;
+    margin: 0px;
+    margin-bottom: 4px;
+    background-color: rgb(242, 222, 222);
+    color: rgb(185, 74, 72);
+}
+
+#error_explanation ul li {
+    font-size: 12px;
+}
+
+.awesome-gray{
+  color: rgb(87, 87, 87);
+}
+
+ul li .awesome-gray{
+  color: rgb(87, 87, 87);
+}

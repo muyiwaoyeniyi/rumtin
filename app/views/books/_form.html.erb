@@ -1,0 +1,54 @@
+<%= nested_form_for(@book, :html => { :multipart => true }) do |f| %>
+  <% if @book.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@book.errors.count, "error") %> prohibited this book from being saved:</h2>
+
+      <ul>
+      <% @book.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field form-group">
+    <%= f.label :title %><br>
+    <%= f.text_field :title, class: "form-control", placeholder: "Ex. Moby Dick" %>
+  </div>
+  <div class="field form-group">
+    <%= f.label :price %><br>
+    <%= f.text_field :price, class: "form-control" %>
+  </div>
+  <div class="field form-group">
+    <%= f.label :location %><strong>/School</strong><br>
+    <%= f.text_field :location, class: "form-control", placeholder: "12 Main St, Seattle, WA or Washington, DC or Harvard U" %>
+  </div>
+  <div class="field form-group">
+    <%= f.label :zipcode %><br>
+    <%= f.text_field :zipcode, class: "form-control", placeholder: "90210" %>
+  </div>
+  <div class="field form-group">
+    <%= f.label :description %><strong>/Info</strong><br>
+    <%= f.text_area :description, :rows => 5, :cols => 3, class: "form-control", placeholder: "You can enter book description, condition, contact info or any other important information here!" %>
+  </div>
+
+
+  <div class="field upload form-group">
+    
+    <%= f.fields_for :book_photos do |p| %>
+      <% if p.object.new_record? %>
+        <%= p.file_field :photo, :id => "file-input" %><%= p.link_to_remove "x" %>
+      <% end %> 
+      <% unless p.object.new_record? %>
+            <%= link_to( image_tag(p.object.photo.url)) %>
+            <%= p.link_to_remove "X"%>
+      <% end %>  
+    <% end %>
+    <p><strong><%= f.link_to_add "Add photos", :book_photos %></strong></p>
+  </div>
+
+
+  <div class="actions">
+    <%= f.submit "List Book", class: "btn btn-default", style: "background-color: #e06d5e; color: white" %>
+  </div>
+<% end %>
