@@ -3,7 +3,7 @@
 Devise.setup do |config|
 
   require "omniauth-facebook"
-  config.omniauth :facebook, "1384782588413203", "673ebe59ebc6df511498a3cbd852a8b8", :strategy_class => OmniAuth::Strategies::Facebook
+  config.omniauth :facebook, "565742920167878", "fc6d8afeee2687e240fe71a46fab601e", :strategy_class => OmniAuth::Strategies::Facebook
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,

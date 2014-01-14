@@ -14,7 +14,7 @@
 
           <div class="row">
           	<div class="col-md-6">
-          	<p class="user-info">Profile created on: <%= current_user.created_at.strftime("%d/%m/%Y") %>, Listed: <%= pluralize(current_user.books.count, "book") %></p>
+          	<p class="user-info">Profile created on: <%= current_user.created_at.strftime("%m/%d/%Y") %>, Listed: <%= pluralize(current_user.books.count, "book") %></p>
           	</div>
           </div>
 
