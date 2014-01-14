@@ -16,9 +16,6 @@ gem "mysql2"
 # For Authorization
 gem "cancan"
 
-# Send mail in development mode
-gem "mailcatcher"
-
 # Handling multiple photos
 gem "nested_form"
 
@@ -32,6 +29,8 @@ gem "paperclip", "~> 3.0"
 gem 'bootstrap-sass'
 group :development do
   gem 'rails_layout'
+  # Send mail in development mode
+	gem "mailcatcher"
 end
 
 group :production do
